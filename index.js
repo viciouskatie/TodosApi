@@ -14,17 +14,49 @@ app.get('/katharine', (req, res) => res.send(
 
 ))
 
+let katvar = "Katharine"
 app.get('/', (req, res) => res.send(
-    'hello world!'
+    `Hello ${katvar}`
 ))
+
+app.get('/todos/:id', (req, res) => {
+    console.log('params', req.params)
+    let item = data.find(item => item.id === parseInt(req.params.id))
+    res.send(
+        item
+    )
+})
+app.get('/todos/:name', (req, res) => {
+    console.log('params', req.params)
+    let item = data.find(item => todo_name === parseInt(req.params.name))
+    res.send(
+        item
+    )
+})
+
+
+// Map, filter, reduce, sort, findByIndex, find, slice, push, indexOf
+
+
+app.get('/todos/filter/:id', (req, res) => {
+    console.log('params', req.params)
+    let item = data.filter((item) => item.id >= parseInt(req.params.id))
+    res.send(
+        item
+    )
+})
 
 /* I separated the function just to make it clear, then added it as the second argument */
 /* This creates a new route at localhost:3000/todos and returns a giant list of todos */
 app.get('/todos', getTodos)
 
-function getTodos(req, res){
+function getTodos(req, res) {
     res.send(data)
 }
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
+
+
+
