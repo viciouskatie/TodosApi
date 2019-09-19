@@ -28,7 +28,7 @@ app.get('/todos/:id', (req, res) => {
 })
 app.get('/todos/:name', (req, res) => {
     console.log('params', req.params)
-    let item = data.find(item => todo_name === parseInt(req.params.name))
+    let item = data.find(item => todo_name === (req.params.todo_name))
     res.send(
         item
     )
