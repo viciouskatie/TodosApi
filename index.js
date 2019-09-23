@@ -26,9 +26,12 @@ app.get('/todos/:id', (req, res) => {
         item
     )
 })
-app.get('/todos/:name', (req, res) => {
-    console.log('params', req.params)
-    let item = data.find(item => item.todo_name === (req.params.todo_name))
+app.get('/todos', (req, res) => {
+    // This uses a query param... so
+    // it looks like this in the url...
+    // http://localhost:3000/todos?todo_name=Optional
+    console.log('query', req.query)
+    let item = data.find(item => item.todo_name === (req.query.todo_name))
     res.send(
         item
     )
